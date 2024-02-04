@@ -15,6 +15,7 @@ import {
   Text,
   useColorScheme,
   View,
+  TouchableOpacity
 } from 'react-native';
 
 import {
@@ -59,9 +60,11 @@ function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: Colors.backgroundColor
   };
-
+  const handlePress = () => {
+    console.log('TouchableHighlight was pressed');
+  };
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar
@@ -69,6 +72,7 @@ function App(): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <ScrollView
+        showsVerticalScrollIndicator={false}
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
@@ -76,10 +80,15 @@ function App(): React.JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
+          <Section title="wenfuzi">
+            Edit <Text style={styles.highlight}>App.tsx~</Text> 111了！！！
           </Section>
+          <TouchableOpacity onPress={handlePress}>
+            <View style={styles.boxStyle}>
+              <Text style={styles.boxText}>5</Text>
+            </View>
+          </TouchableOpacity>
+
           <Section title="See Your Changes">
             <ReloadInstructions />
           </Section>
@@ -112,6 +121,18 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  boxStyle: {
+    width:100,
+    height:100,
+    backgroundColor:'#000000',
+    borderRadius:10,
+    marginLeft:10
+  },
+  boxText: {
+    color:'#ffffff',
+    textAlign:'center',
+    lineHeight:100
   },
 });
 
